@@ -1,0 +1,64 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="index.js"></script>
+<link rel="stylesheet" type="text/css" href="index.css">
+
+<h1 class='center'>Welcome To Github Search</h1>
+
+<div id='user-container' class='container' ng-controller='userController'>
+	<div class='center layer-sect'>
+		<input id='user-search-input' class='center' ng-model='searchUser' ng-model-options="{ debounce: 1000 }" 
+		placeholder="Search for username" ng-change='getUserData()'>
+	</div>
+
+	<div class='search-result' ng-show='userResult'>
+		<div id='user-result-container' class='layer-sect'>
+			<div class="row">
+				<div class="col-sm-4">Username:</div>
+				<div class="col-sm-8">{$ userResult.login $}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">Name:</div>
+				<div class="col-sm-8">{$ userResult.name $}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">Email:</div>
+				<div class="col-sm-8">{$ userResult.email $}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">Url:</div>
+				<div class="col-sm-8">{$ userResult.url $}</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">Follower Count:</div>
+				<div class="col-sm-8">{$ userResult.followers $}</div>
+			</div>
+		</div>
+
+		<div id='followers-container' class='layer-sect'>
+			<div id='followers-title-container'>
+				<button class='btn load-more-button' ng-click='getFollowers()' ng-show='followerArr.length < userResult.followers' >Load More</button>
+				<div id='followers-title'>Followers:</div>
+				<div>Currently displaying {$ followerArr.length  $} out of {$ userResult.followers $} followers.</div>
+			</div>
+			<div id='followers-image-container'>
+				<div ng-repeat='f in followerArr' class='image-border'>
+					<a ng-href='{$ f.html_url $}' target="_blank"> 
+						<img ng-src='{$ f.avatar_url $}'>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show='userResultError != "" '>
+		{$ userResultError $}
+	</div>
+</div>

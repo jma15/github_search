@@ -1,0 +1,50 @@
+Jeffrey Ma
+
+Contact:
+If you have any problems compiling or installing the program, please feel free to contact me.
+
+These are the main files for this assignment
+index.html						HTML template
+index.js						Angularjs gets data from Github Api
+index.css						CSS styling for the index
+
+Assumptions:
+1. Assume we want mobile friendly
+2. Cross browser 
+
+Objective:
+1. Create a service that search for a GitHub username from GitHub Api.
+2. Display users Github Handle, follower count and list of follower.
+3. Create a load more button to get more follower (GitHub only retrieves 30 followers at a time)
+
+How to Use:
+	Type in the username to search for. The search has a debounce of 1.5 sec to wait after typing.
+	If there are more than 30 followers, the 'Load More' button will display.
+	The followers image are clickable links that opens a new GitHub page of the user.
+
+Compile:
+	Open index.html with a browser. (Require internet for bootstrap and angularjs cdn)
+
+Description:
+	Notes:
+		This is just a simple standard page with angularjs and some mobile friendly.
+
+	Additional Time:
+		Unit and Integration test
+		Allow more in depth search by taking more parameter for the GitHub Api
+		Implement tracking to see what users searched
+		Allow searching for multiple users
+
+	Problem:
+		User wants to search for username and data from GitHub
+
+	Solution:
+		Create a web page to take in a username and send a http request to Github for data.
+
+	Technical Choices:
+		This page structure is pretty basic. Angularjs helps keep the structure clean and easy to understand.
+		Bootstrap helps with the mobile friendliness, so the grid system was better than using table for display.
+		If we want to do more, we could create javascript classes to store the user's data.
+
+	Personal Github:
+		https://github.com/jma15
